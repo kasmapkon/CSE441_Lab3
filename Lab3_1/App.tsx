@@ -1,24 +1,21 @@
-import * as React from 'react';
+import 'react-native-gesture-handler';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ProductList from './ProductList';
-import AddProduct from './AddProduct';
-import SearchProducts from './SearchProducts';
-import ProductDetail from './ProductDetail';
+import { createStackNavigator } from '@react-navigation/stack';
+import ProductList from './ProductList'; 
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
-function App() {
+export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Products">
-        <Stack.Screen name="Products" component={ProductList} />
-        <Stack.Screen name="AddProduct" component={AddProduct} />
-        <Stack.Screen name="SearchProducts" component={SearchProducts} />
-        <Stack.Screen name="ProductDetail" component={ProductDetail} />
+      <Stack.Navigator>
+        <Stack.Screen
+          name="ProductListScreen"
+          component={ProductList}
+          options={{ title: 'Product List' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-export default App;
